@@ -131,9 +131,9 @@ MathJax.Hub.Config({
 
 <h2>Electron Energy Loss Spectroscopy - EELS</h2>
 
-<p> Electron energy loss spectroscopy is an analytical technique used to gain elemental, chemical or dielectric information from samples. It is typically performed in scanning transmission electron microscopes (STEM) with beam energy's of $60-200 ~ keV$. In this configuration, the energy loss of the transmitted electron beam is analyzed, which originates from inelastic scattering in the sample. The energy loss is hereby measured by passing the transmitted beam trough a magnetic prism, located below the specimens chamber. This prism disperses the beam according to its kinetic energy, which is directly related to the energy loss due to prior interactions with the sample. The EELS spectrum typically covers the range from $0$ to $3~keV$ loss, with an energy resolution determined by the initial energy spread of the beam $\Delta E \approx 0.1 - 3~eV$. </p>
+<p> Electron energy loss spectroscopy is an analytical technique used to gain elemental, chemical or dielectric information from samples. It is typically performed in scanning transmission electron microscopes (STEM) with beam energies of $60-200 ~ keV$. In this configuration, the energy loss of the transmitted electron beam is analyzed, which originates from inelastic scattering in the sample. The energy loss is hereby measured by passing the transmitted beam trough a magnetic prism, located below the specimens chamber. This prism disperses the beam according to its kinetic energy, which is directly related to the energy loss due to prior interactions with the sample. The EELS spectrum typically covers the range from $0$ to $3~keV$ loss, with an energy resolution determined by the initial energy spread of the beam $\Delta E \approx 0.1 - 3~eV$. </p>
 
-<p>EEL spectra are generally divided into two regions. A low-loss-region from $0$ to $50~eV$ and a high-loss-region with losses greater than $50~eV$. The amplitude of the high loss spectrum is generally amplified by a factor of $100 - 1000$, as the probability for scattering at these energy's is much lower compared to the low-loss region. This scattering probability is generally described by the differential <a href="https://en.wikipedia.org/wiki/Cross_section_%28physics%29">cross-section</a> $\frac{d \sigma}{d E}$.   The following figure shows an overview of the different excitation sources, which can be seen in an EEL spectrum. </p>
+<p>EEL spectra are generally divided into two regions. A low-loss-region from $0$ to $50~eV$ and a high-loss-region with losses greater than $50~eV$. The amplitude of the high loss spectrum is generally amplified by a factor of $100 - 1000$, as the probability for scattering at these energies is much lower compared to the low-loss region. This scattering probability is generally described by the differential <a href="https://en.wikipedia.org/wiki/Cross_section_%28physics%29">cross-section</a> $\frac{d \sigma}{d E}$.   The following figure shows an overview of the different excitation sources, which can be seen in an EEL spectrum. </p>
 
 <p style="text-align:center"><img class="displayed" src="EELS_example.png" alt="EELS spectrum parts" title="EELS spectrum parts" width="640" height="410"></p>
 
@@ -151,7 +151,7 @@ MathJax.Hub.Config({
 
 <p>where $a_0$ is the Bohr radius, $v$ the velocity of the electrons, $n_a$ the density of atoms, $\beta$ the collection angle of the electrons and $\theta_E = E/(\gamma m_0 v^2)$ a characteristic scattering angle.
 
-The <a href="http://lampx.tugraz.at/~hadley/ss2/linearresponse/causality.php">Kramers-Kronig</a> relationships could be exploited to compute the full dielectric function, and therefore also the optical property's of the material. </p>
+The <a href="http://lampx.tugraz.at/~hadley/ss2/linearresponse/causality.php">Kramers-Kronig</a> relationships could be exploited to compute the full dielectric function, and therefore also the optical properties of the material. </p>
 
 <!--\[ \begin{equation} \label{Real_eps}
 Re \left(\frac{-1}{\epsilon (\omega)}\right) -1 = \frac{1}{\pi} P \int_\infty^\infty Im \left(\frac{-1}{\epsilon (\omega')}\right) \frac{1}{\omega' - \omega} d\omega'
@@ -163,24 +163,31 @@ Re \left(\frac{-1}{\epsilon (\omega)}\right) -1 = \frac{1}{\pi} P \int_\infty^\i
 \epsilon(\omega) = \epsilon(\omega)' + i \epsilon(\omega)'' = \frac{Re \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2} + i \frac{Im \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2}
 \end{equation} \] -->
 
-<p> The high-loss region contains information about the elemental composition, bonding and coordination numbers of the elements in the sample. Those property's are all encoded in the structure, and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, excitation edges are a unique signature of the elemental composition of the sample. They are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a decrease in intensity with increasing energy loss. The following figure shows the core loss spectrum of tin, with the $L_3$, $L_2$ and $L_1$ edge, which correspond to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states. </p>
+<p> The high-loss region contains information about the elemental composition, bonding and coordination numbers of the elements in the sample. Those properties are all encoded in the structure, and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, excitation edges are a unique signature of the elemental composition of the sample. They are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a decrease in intensity with increasing energy loss. The following figure shows the core loss spectrum of tin, with the $L_3$, $L_2$ and $L_1$ edge, which correspond to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states. </p>
 
-<p>The probability for such transitions can be computed using Fermis golden rule and summing over all possible final states $\langle f |$ of the electron: </p>
+<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: </p>
 
 \[ \begin{equation} \label{high_loss_exc}
-\frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |{\langle f| \exp{(iqr)}|i\rangle|^2} \cdot N_f(E)
+ \frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f| \exp{(iqr)}|i\rangle|^2 \cdot N_f(E)
 \end{equation} \]
 
-<p> $N_f(E)$ is hereby the solid state DOS. The translation operator $\exp{(iqr)}$ could be expanded as Taylor series for small scattering vectors $q$. In this case, the orthogonality between the different wave-functions $\langle i|$ and $\langle f|$ could be exploited to further simplify the expression:</p>
+<p>The translation operator $\exp{(iqr)}$ could be expanded as Taylor series for small scattering vectors $q$. In this case, the orthogonality between the different wave-functions $\langle i|$ and $\langle f|$ could be exploited to further simplify the expression:</p>
 
 \[ \begin{equation} \label{high_loss_exc2}
-\frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |{\langle f|qr|i\rangle|^2} \cdot N_f(E)
+\frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f|qr|i\rangle|^2 \cdot N_f(E)
 \end{equation} \]
 
-<p> Therefore, the transition probability is directly proportional to the unoccupied density of states. Additionally, the dipole selection rules must hold.  </p>
+<p> Therefore, the transition probability is directly proportional to the unoccupied density of states, as well as to the transition matrix element $|\langle f|qr|i\rangle|^2$. This transition matrix element restricts the possible excitations to dipole allowed transitions, with an angular momentum change of $\Delta \mathcal{l} = \pm 1$ (eg. transition from $2p^{\frac{3}{2}}$ into s-, or d-states). Additionally, sufficient overlap between the initial-, and final state is required, allowing only transitions to the same atomic site. Nevertheless, the overall structure of the excitation edges is mainly determined by $N_f(E)$, as $|\langle f|qr|i\rangle|^2$ varies only slowly with energy. Thus, the structure of the excitation edges in EELS shows the local, symmetry projected unoccupied density of states. This is often refereed as the energy-loss near edge fine structure (ELNES). </p>
+
+<p></p>
 
 <p>&ensp;</p>
 <p>&ensp;</p>
+
+<hr />
+<p>[1] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
+<p>[2] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
+
 
 
 <hr style='border:2.2px solid Black'></hr>
@@ -202,7 +209,7 @@ https://eelsdb.eu/wp-content/uploads/2015/09/Dspecshb3tD.msa
 <p>&ensp;</p>
 Content: 
 Setup of an EELS spectrometer
-The EELS spectrum itself - breevely discuss the different parts of the EELS spectrum, and discuss the information contained in these regions. Stronger focuss on the high-loss region with the element specific edges. Brevely introduce ELNES and the chemical shift. Conclude by discussing more advanced conceps like elemental maps spectrum imaging etc. 
+The EELS spectrum itself - briefly discuss the different parts of the EELS spectrum, and discuss the information contained in these regions. Stronger focus on the high-loss region with the element specific edges. Briefly introduce ELNES and the chemical shift. Conclude by discussing more advanced concepts like elemental maps spectrum imaging etc. 
 
 
 <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
