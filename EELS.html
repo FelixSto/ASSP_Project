@@ -1,4 +1,8 @@
-<title></title>
+<html>
+<head>
+
+
+<title>EELS</title>
 <meta name="Author" content="Peter Hadley">
 <script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=bsJ9-9XgjQT_DpifjYJnV3a3OVcfJotn8qzrrOMpVHwNz37f6ToEqDau3F-RJWLittcquzxoB_rtXK8-TyLp6BiH8Olyf_sAWg7PK_8alijrR3GQzFFZtJZ-MJrBjRQe" charset="UTF-8"></script><style>
 
@@ -37,7 +41,6 @@ div.gray {background-color:ededed;}
 </style>
 
 </head>
-
 
 <body style="background-color:white">
 
@@ -106,6 +109,8 @@ div.gray {background-color:ededed;}
 
 </table>
 
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top"></td>
+
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
@@ -121,13 +126,11 @@ MathJax.Hub.Config({
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
-
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
 <script language="javascript" type="text/javascript" src="eels_materials.js"></script>
 
-<script language="JavaScript">
-
-</script>
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
 
 <h2>Electron Energy Loss Spectroscopy - EELS</h2>
 
@@ -144,7 +147,7 @@ MathJax.Hub.Config({
 \omega_P^2 = \frac{4\pi n e^2}{m}
 \end{equation} \]
 
-<p>The whole low loss region of an EELS spectrum contains also dielectric information about the sample as the differential cross section $\frac{d \sigma}{d E}$ is dependant on $\epsilon(E)$,</p>
+<p>The whole low loss region of an EELS spectrum contains also dielectric information about the sample as the differential cross section $\frac{d \sigma}{d E}$ at those energies is dependant on $\epsilon(E)$,</p>
 
 \[ \begin{equation} \label{cross-section}\frac{d \sigma}{d E} = \frac{2}{\pi a_0 m_0 v^2 n_a} Im \left(\frac{-1}{\epsilon (E)}\right)\ln{\left[1+\left(\frac{\beta}{\theta_E}\right)^2\right]}
 \end{equation} \]
@@ -163,76 +166,41 @@ Re \left(\frac{-1}{\epsilon (\omega)}\right) -1 = \frac{1}{\pi} P \int_\infty^\i
 \epsilon(\omega) = \epsilon(\omega)' + i \epsilon(\omega)'' = \frac{Re \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2} + i \frac{Im \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2}
 \end{equation} \] -->
 
-<p> The high-loss region contains information about the elemental composition, bonding and coordination numbers of the elements in the sample. Those properties are all encoded in the structure, and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, excitation edges are a unique signature of the elemental composition of the sample. They are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a decrease in intensity with increasing energy loss. The following figure shows the core loss spectrum of tin, with the $L_3$, $L_2$ and $L_1$ edge, which correspond to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states. </p>
+<p> The high-loss region contains information about the elemental composition, bonding, <a href="https://en.wikipedia.org/wiki/Coordination_number">coordination numbers</a> and <a href="https://en.wikipedia.org/wiki/Radial_distribution_function">interatomic distances</a>   of the elements in the sample. Those properties are all encoded in the structure, and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, the position of edges in the EEL spectrum is a unique signature of the elemental composition of the sample. The edges are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a slow decrease in intensity with increasing energy loss. Adjacent edges are generally superimposed on the background created by other edges at lower energies, making background subtraction a crucial task for successful edge classification. The following figure shows the background-subtracted core loss spectrum of tin, with the prominent $L_3$, $L_2$ and $L_1$ edges, corresponding to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states.  </p>
 
-<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: </p>
+<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: [1] </p>
 
 \[ \begin{equation} \label{high_loss_exc}
  \frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f| \exp{(iqr)}|i\rangle|^2 \cdot N_f(E)
 \end{equation} \]
 
-<p>The translation operator $\exp{(iqr)}$ could be expanded as Taylor series for small scattering vectors $q$. In this case, the orthogonality between the different wave-functions $\langle i|$ and $\langle f|$ could be exploited to further simplify the expression:</p>
+<p>The translation operator $\exp{(iqr)}$ could be expanded as Taylor series for small scattering vectors $q$. In this case, the orthogonality between the different wave-functions $\langle i|$ and $\langle f|$ can be exploited to further simplify the expression:</p>
 
 \[ \begin{equation} \label{high_loss_exc2}
 \frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f|qr|i\rangle|^2 \cdot N_f(E)
 \end{equation} \]
 
-<p> Therefore, the transition probability is directly proportional to the unoccupied density of states, as well as to the transition matrix element $|\langle f|qr|i\rangle|^2$. This transition matrix element restricts the possible excitations to dipole allowed transitions, with an angular momentum change of $\Delta \mathcal{l} = \pm 1$ (eg. transition from $2p^{\frac{3}{2}}$ into s-, or d-states). Additionally, sufficient overlap between the initial-, and final state is required, allowing only transitions to the same atomic site. Nevertheless, the overall structure of the excitation edges is mainly determined by $N_f(E)$, as $|\langle f|qr|i\rangle|^2$ varies only slowly with energy. Thus, the structure of the excitation edges in EELS shows the local, symmetry projected unoccupied density of states. This is often refereed as the energy-loss near edge fine structure (ELNES). </p>
+<p> Therefore, the transition probability is directly proportional to the unoccupied density of states, as well as to the transition matrix element $|\langle f|qr|i\rangle|^2$. This transition matrix element restricts the possible excitations to dipole allowed transitions, with an angular momentum change of $\Delta \mathcal{l} = \pm 1$ (eg. transition from $2p^{\frac{3}{2}}$ into s-, or d-states). Additionally, sufficient overlap between the initial-, and final state is required, allowing only transitions to the same atomic site. Nevertheless, the overall structure of the excitation edges is mainly determined by $N_f(E)$, as $|\langle f|qr|i\rangle|^2$ varies only slowly with energy. Thus, the structure of the excitation edges in EELS shows the local, symmetry projected unoccupied density of states. This is often refereed as energy-loss near edge fine structure (ELNES). </p>
+  
+<script>
+$(document).ready(vanadium);
+</script>
 
-<p></p>
+<table align="center"><tr><td>$Counts$</td><td>
+<div id="placeholder" style="width:500px;height:300px;"></div>
+</td></tr>
+<tr><td></td><td><p style="text-align:center">$eV$</p></td></tr></table>
+
+<p>Test</p>
 
 <p>&ensp;</p>
 <p>&ensp;</p>
 
 <hr />
+<h3> References </h3>
 <p>[1] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
 <p>[2] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
 
+</body>
+</html>
 
-
-<hr style='border:2.2px solid Black'></hr>
-<p>&ensp;</p>
-
-view-source:http://lampx.tugraz.at/~hadley/ss2/magnetism/para.php
-
-
-
-https://web.archive.org/web/20201205225003/https://www.globalsino.com/EM/page3801.html
-https://eelsdb.eu/wp-content/uploads/2015/09/Dspecshb3tD.msa
-
-
-
-<!--
-<p>The incident electrons loose some of their kinetic energy by generating quasiparticles in the sample.  $\Delta E = n\omega_p\hbar$ </p>
-
-<hr style='border:2.2px solid Black'></hr>
-<p>&ensp;</p>
-Content: 
-Setup of an EELS spectrometer
-The EELS spectrum itself - briefly discuss the different parts of the EELS spectrum, and discuss the information contained in these regions. Stronger focus on the high-loss region with the element specific edges. Briefly introduce ELNES and the chemical shift. Conclude by discussing more advanced concepts like elemental maps spectrum imaging etc. 
-
-
-<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
-<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
-<script>
-$(document).ready(function(){
-  var d = [];
-  for (i=0; i<501; i++) {
-    x = i/100;
-    d[i] = [x,Math.tanh(x)];
-  }
-
-  var data1 = [{ data: d, color: "rgb(0,0, 0)", shadowSize:0, lines: {show:true} }];
-  $.plot($("#placeholder"), data1);
-
-});
-
-</script>
-
-<table align="center"><tr><td>$\large A.U$</td><td>
-<div id="placeholder" style="width:400px;height:300px;"></div>
-</td></tr>
-<tr><td></td><td><p style="text-align:center">$\large \frac{\mu B}{k_BT}$</p></td></tr></table>
-
-
---> 
