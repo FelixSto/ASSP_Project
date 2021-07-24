@@ -106,7 +106,6 @@ div.gray {background-color:ededed;}
 <!-- <tr><td class="button"><p class="button"><a class="button" href="http://lampx.tugraz.at/~hadley/ss1/presentations/index.php">Making presentations</a></p></td></tr>
 <tr><td class="button"><p class="button"><a class="button" href="../problems/login.php">Login</a></p></td></tr> -->
 
-
 </table>
 
 </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top"></td>
@@ -125,10 +124,10 @@ MathJax.Hub.Config({
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
 <script language="javascript" type="text/javascript" src="eels_materials.js"></script>
+
 
 </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
 
@@ -147,9 +146,9 @@ MathJax.Hub.Config({
 \omega_P^2 = \frac{4\pi n e^2}{m}
 \end{equation} \]
 
-<p>The whole low loss region of an EELS spectrum contains also dielectric information about the sample as the differential cross section $\frac{d \sigma}{d E}$ at those energies is dependant on $\epsilon(E)$,</p>
+<p>The whole low loss region of an EELS spectrum contains also dielectric information about the sample as the differential cross section $\frac{d \sigma}{d E}$ at those energies is proportional to $\epsilon(E)$, [1]</p>
 
-\[ \begin{equation} \label{cross-section}\frac{d \sigma}{d E} = \frac{2}{\pi a_0 m_0 v^2 n_a} Im \left(\frac{-1}{\epsilon (E)}\right)\ln{\left[1+\left(\frac{\beta}{\theta_E}\right)^2\right]}
+\[ \begin{equation} \label{cross-section}\frac{d \sigma}{d E} \approx \frac{2}{\pi a_0 m_0 v^2 n_a} Im \left(\frac{-1}{\epsilon (E)}\right)\ln{\left[1+\left(\frac{\beta}{\theta_E}\right)^2\right]}
 \end{equation} \]
 
 <p>where $a_0$ is the Bohr radius, $v$ the velocity of the electrons, $n_a$ the density of atoms, $\beta$ the collection angle of the electrons and $\theta_E = E/(\gamma m_0 v^2)$ a characteristic scattering angle.
@@ -166,19 +165,9 @@ Re \left(\frac{-1}{\epsilon (\omega)}\right) -1 = \frac{1}{\pi} P \int_\infty^\i
 \epsilon(\omega) = \epsilon(\omega)' + i \epsilon(\omega)'' = \frac{Re \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2} + i \frac{Im \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2}
 \end{equation} \] -->
 
-<p> The high-loss region contains information about the elemental composition, bonding, <a href="https://en.wikipedia.org/wiki/Coordination_number">coordination numbers</a> and <a href="https://en.wikipedia.org/wiki/Radial_distribution_function">interatomic distances</a>   of the elements in the sample. Those properties are all encoded in the structure and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, the position of edges in the EEL spectrum is a unique signature of the elemental composition of the sample. The edges are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a slow decrease in intensity with increasing energy loss. Adjacent edges are generally superimposed on the background created by other edges at lower energies, making background subtraction a crucial task for successful edge classification. The following figure shows the background-subtracted core loss spectrum of tin, with the prominent $L_3$, $L_2$ and $L_1$ edges, corresponding to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states.  </p>
+<p> The high-loss region contains information about the elemental composition, bonding, <a href="https://en.wikipedia.org/wiki/Coordination_number">coordination numbers</a> and <a href="https://en.wikipedia.org/wiki/Radial_distribution_function">interatomic distances</a>   of the elements in the sample. Those properties are all encoded in the structure and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, the position of edges in the EEL spectrum is a unique signature of the elemental composition of the sample. The edges are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a slow decrease in intensity with increasing energy loss. Adjacent edges are generally superimposed on the background created by other edges at lower energies, making background subtraction a crucial task for successful edge classification. See for example the  <a href="#placeholder">core loss spectrum of tin or silver</a> with the prominent $L_3$, $L_2$ and $L_1$ edges, corresponding to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states.  </p>  
 
-<script>
-$(document).ready(tin);
-</script>
-  
-<table align="center"><tr><td>$Counts$</td><td>
-<div id="placeholder_tin" style="width:500px;height:300px;"></div>
- </td></tr>
-<tr><td></td><td><p style="text-align:center">$eV$</p></td></tr></table>
-  
-
-<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: [1] </p>
+<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: [2] </p>
 
 \[ \begin{equation} \label{high_loss_exc}
  \frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f| \exp{(iqr)}|i\rangle|^2 \cdot N_f(E)
@@ -194,30 +183,58 @@ $(document).ready(tin);
 
 <p>The overall structure of the excitation edges is nevertheless mainly determined by $N_f(E)$, as $|\langle f|qr|i\rangle|^2$ varies only slowly with energy. Thus, the structure of the excitation edges in EELS depicts the local, symmetry projected, unoccupied density of states. This is often referred as energy-loss near edge fine structure (ELNES), an can be used to determine bonding and coordination information of the sample.</p>
 
-<p>The following figure shows EEL spectra of the $L_2$ and $L_3$ edge of various metals, some of which are in their oxide form. Different edge shapes could be identified, depending on the unoccupied density of states. For example, transition metals with unoccupied d-band exhibit characteristic peaks (white-lines), originating from excitations into this sharp energy level. </p>
+<p>The following figure shows measured EEL spectra of various elements, some of which are in their oxide form. [3] Different edge shapes could be identified, depending on the unoccupied density of states. For example, transition metals with an unoccupied d-band exhibit characteristic peaks (white-lines), originating from excitations into this sharp energy level. </p>
 
 <p><body onload="$(document).ready(vanadium);"></body></p>
-  
-<table align="center"><tr><td>$Counts$</td><td><form name="data">
-<div id="placeholder" style="width:500px;height:300px;"></div>
-</td><td><p style="text-align:center">
-  <input type="button" value="Vn" onclick="$(document).ready(vanadium);"><br>
-  <input type="button" value="CrO" onclick="$(document).ready(chromium);"><br>
-  <input type="button" value="MnO2" onclick="$(document).ready(manganese);"><br>
-  <input type="button" value="Fe2O3" onclick="$(document).ready(iron);"><br>
-  <input type="button" value="CoO" onclick="$(document).ready(cobalt);"><br>
-  <input type="button" value="NiO" onclick="$(document).ready(nickel);"><br>
-  <input type="button" value="Cu" onclick="$(document).ready(copper);"><br>
-</p>
-</td></tr><tr><td></td><td><p style="text-align:center">$eV$</p></form></td></tr></table>
 
-<p>&ensp;</p>
+<table align="center">
+  <tr>
+    <td></td>
+    <td><b><p style="text-align:center" id="Element">Element</p></b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>$Counts$</td>
+    <td><form name="data">
+      <div id="placeholder" style="width:500px;height:300px;"></td>
+    <td><p style="text-align:center">
+      <b>L-edges</b><br>
+      <input type="button" style="width:50px;" value="Vn" onclick="$(document).ready(vanadium);"><br>
+      <input type="button" style="width:50px;" value="CrO" onclick="$(document).ready(chromium);"><br>
+      <input type="button" style="width:50px;" value="MnO₂" onclick="$(document).ready(manganese);"><br>
+      <input type="button" style="width:50px;" value="Fe₂O₃" onclick="$(document).ready(iron);"><br>
+      <!--<input type="button" style="width:50px;" value="CoO L₁/L₂ edge " onclick="$(document).ready(cobalt);"><br>
+      <input type="button" style="width:50px;"  value="NiO L₁/L₂ edge" onclick="$(document).ready(nickel);"><br>-->
+      <input type="button" style="width:50px;" value="Cu" onclick="$(document).ready(copper);"><br>
+      <input type="button" style="width:50px;" value="Ag" onclick="$(document).ready(silver);"><br>
+      <input type="button" style="width:50px;" value="Sn" onclick="$(document).ready(tin);"><br>
+      <br>
+      <b>K-edges</b><br>
+      <input type="button" style="width:50px;" value="Si" onclick="$(document).ready(silicon);"><br>
+      <input type="button" style="width:50px;" value="O" onclick="$(document).ready(iron);"><br>
+    </p></td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td><p style="text-align:center">$eV$</p></td>
+    <td>    
+    </td>
+  </tr> 
+</table>
+
+
+<p>A special variant of EELS is <a href="https://en.wikipedia.org/wiki/High_resolution_electron_energy_loss_spectroscopy">(H)REELS</a>, where the energy loss of a reflected electron beam is studied. This analysis is usually performed at much lower beam energies than conventional EELS measurements, providing a much higher surface sensitivity, as well as energy resolution (down to $meV$). </p>
+
 <p>&ensp;</p>
 
 <hr />
 <h3> References </h3>
-<p>[1] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
+<p>[1] Egerton, R. F. (1996) Electron energy-loss spectroscopy in the electron microscope. 2. ed.</a></p>
 <p>[2] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
+<p>[3] Source of the EEL-spectra <a href="https://eels.info/atlas">EELS atlas</a> and <a href="https://eelsdb.eu/">EELS data base</a></p>
+
+<h3>Further Reading:</h3>
+<p>Highly recommended side with lots of infos: <a href="https://eels.info/">EELS.info</a></p>
 
 </body>
 </html>
