@@ -1,0 +1,133 @@
+<html>
+    
+<title>EELS</title>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+    </script>
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+      });
+    </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="eels_materials.js"></script>
+
+
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
+
+<h2>Electron Energy Loss Spectroscopy - EELS</h2>
+
+<p> Electron energy loss spectroscopy is an analytical technique used to gain elemental, chemical or dielectric information from samples. It is typically performed in scanning transmission electron microscopes (STEM) with beam energies of $60-200 ~ keV$. In this configuration, the energy loss of the transmitted electron beam is analyzed, which originates from inelastic scattering in the sample. The energy loss is hereby measured by passing the transmitted beam trough a magnetic prism, located below the specimens chamber. This prism disperses the beam according to its kinetic energy, which is directly related to the energy loss due to prior interactions with the sample. The EEL spectrum typically covers the range from $0$ to $3~keV$ loss, with an energy resolution determined by the initial energy spread of the beam $\Delta E \approx 0.1 - 3~eV$. </p>
+
+<p>EEL spectra are generally divided into two regions. A low-loss-region from $0$ to $50~eV$ and a high-loss-region with losses greater than $50~eV$. The amplitude of the high loss spectrum is amplified by a factor of $100 - 1000$, as the probability for scattering at these energies is much lower compared to the low-loss region. This scattering probability is generally described by the differential <a href="https://en.wikipedia.org/wiki/Cross_section_%28physics%29">cross-section</a> $\frac{d \sigma}{d E}$.   The following figure shows an overview of the different excitation sources which can be seen in an EEL spectrum. </p>
+
+<p style="text-align:center"><img class="displayed" src="EELS_example.png" alt="EELS spectrum parts" title="EELS spectrum parts" width="640" height="410"></p>
+
+<p> The most prominent feature in the low loss region is the zero loss peak, originating from elastically scattered electrons with no energy loss. Measuring the full width at half maximum of the zero loss peak allows to determine the energy resolution of the system. Furthermore, it can be used to estimate the relative sample thickness, by using the <a href="https://eels.info/how/quantification/plural-scattering-and-sample-thickness">log-ratio technique</a>, which is based on a Poisson model for thickness dependant electron scattering. </p> 
+
+<p> After the zero loss peak, several plasmon peaks could be observed. They originate from the excitation of multiple bulk and surface plasmons in the sample, and could occur at integer multiples of the fundamental plasmon energy $E_p = \hbar \omega_p$. The position of the plasmon peaks could be used to calculate the electron density with the plasma frequency $\omega_P$ </p>
+\[ \begin{equation} \label{plasmon}
+\omega_P^2 = \frac{4\pi n e^2}{m}
+\end{equation} \]
+
+<p>The whole low loss region of an EELS spectrum contains also dielectric information about the sample as the differential cross section $\frac{d \sigma}{d E}$ at those energies is proportional to $\epsilon(E)$, [1]</p>
+
+\[ \begin{equation} \label{cross-section}\frac{d \sigma}{d E} \approx \frac{2}{\pi a_0 m_0 v^2 n_a} Im \left(\frac{-1}{\epsilon (E)}\right)\ln{\left[1+\left(\frac{\beta}{\theta_E}\right)^2\right]}
+\end{equation} \]
+
+<p>where $a_0$ is the Bohr radius, $v$ the velocity of the electrons, $n_a$ the density of atoms, $\beta$ the collection angle of the electrons and $\theta_E = E/(\gamma m_0 v^2)$ a characteristic scattering angle.
+
+The <a href="http://lampx.tugraz.at/~hadley/ss2/linearresponse/causality.php">Kramers-Kronig</a> relationships could be exploited to compute the full dielectric function, and therefore also the optical properties of the material. </p>
+
+<!--\[ \begin{equation} \label{Real_eps}
+Re \left(\frac{-1}{\epsilon (\omega)}\right) -1 = \frac{1}{\pi} P \int_\infty^\infty Im \left(\frac{-1}{\epsilon (\omega')}\right) \frac{1}{\omega' - \omega} d\omega'
+\end{equation} \]
+
+ <p>This leads directly to:  </p>
+
+\[ \begin{equation} \label{Real_eps2}
+\epsilon(\omega) = \epsilon(\omega)' + i \epsilon(\omega)'' = \frac{Re \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2} + i \frac{Im \left(\frac{-1}{\epsilon (\omega)}\right)}{Re \left(\frac{-1}{\epsilon (\omega)}\right)^2 + Im \left(\frac{-1}{\epsilon (\omega)}\right)^2}
+\end{equation} \] -->
+
+<p> The high-loss region contains information about the elemental composition, bonding, <a href="https://en.wikipedia.org/wiki/Coordination_number">coordination numbers</a> and <a href="https://en.wikipedia.org/wiki/Radial_distribution_function">interatomic distances</a>   of the elements in the sample. Those properties are all encoded in the structure and position of the excitation edges. These edges occur when inner shell electrons of the atoms are ionized by the incident electron beam. The critical ionization energy for such an excitation is dependant on the specific element, and the initial state of the core electron. Therefore, the position of edges in the EEL spectrum is a unique signature of the elemental composition of the sample. The edges are labeled after the initial state of the electron, and usually show up as sudden increase in the EEL spectrum, followed by a slow decrease in intensity with increasing energy loss. Adjacent edges are generally superimposed on the background created by other edges at lower energies, making background subtraction a crucial task for successful edge classification. See for example the  <a href="#placeholder">core loss spectrum of tin or silver</a> with the prominent $L_3$, $L_2$ and $L_1$ edges, corresponding to excitations from the $2p^{\frac{3}{2}}$, $2p^{\frac{1}{2}}$ and $2s^{\frac{1}{2}}$ states into the unoccupied density of states.  </p>  
+
+<p>The probability for such transitions in an EEL-spectrum can be computed by summing over the product of the probabilities of a transition $|\langle f|qr|i\rangle|^2$, with the density of states of the final state $N_f(E)$ of the electron: [2] </p>
+
+\[ \begin{equation} \label{high_loss_exc}
+ \frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f| \exp{(iqr)}|i\rangle|^2 \cdot N_f(E)
+\end{equation} \]
+
+<p>The translation operator $\exp{(iqr)}$ could be expanded as Taylor series for small scattering vectors $q$. In this case, the orthogonality between the different wave-functions $\langle i|$ and $\langle f|$ can be exploited to further simplify the expression:</p>
+
+\[ \begin{equation} \label{high_loss_exc2}
+\frac{d^2 \sigma}{d E d \Omega} \approx \sum_f |\langle f|qr|i\rangle|^2 \cdot N_f(E)
+\end{equation} \]
+
+<p> Therefore, the transition probability is directly proportional to the unoccupied density of states, as well as to the transition matrix element $|\langle f|qr|i\rangle|^2$. This transition matrix element restricts the possible excitations to dipole allowed transitions, with an angular momentum change of $\Delta \mathcal{l} = \pm 1$ (eg. transition from $2p^{\frac{3}{2}}$ into s-, or d-states). Additionally, sufficient overlap between the initial-, and final state is required, allowing only transitions to the same atomic site. </p>
+
+<p>The overall structure of the excitation edges is nevertheless mainly determined by $N_f(E)$, as $|\langle f|qr|i\rangle|^2$ varies only slowly with energy. Thus, the structure of the excitation edges in EELS depicts the local, symmetry projected, unoccupied density of states. This is often referred as energy-loss near edge fine structure (ELNES), an can be used to determine bonding and coordination information of the sample.</p>
+
+<p>The following figure shows measured EEL spectra of various elements, some of which are in their oxide form. [3] Different edge shapes could be identified, depending on the unoccupied density of states. For example, transition metals with an unoccupied d-band exhibit characteristic peaks (white-lines), originating from excitations into this sharp energy level. </p>
+
+<p><body onload="$(document).ready(vanadium);"></body></p>
+
+<table align="center">
+  <tr>
+    <td></td>
+    <td><b><p style="text-align:center" id="Element">Element</p></b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>$Counts$</td>
+    <td><form name="data">
+      <div id="placeholder" style="width:500px;height:300px;"></td>
+    <td><p style="text-align:center">
+      <b>L-edges</b><br>
+      <input type="button" style="width:50px;" value="Vn" onclick="$(document).ready(vanadium);"><br>
+      <input type="button" style="width:50px;" value="CrO" onclick="$(document).ready(chromium);"><br>
+      <input type="button" style="width:50px;" value="MnO₂" onclick="$(document).ready(manganese);"><br>
+      <input type="button" style="width:50px;" value="Fe₂O₃" onclick="$(document).ready(iron);"><br>
+      <!--<input type="button" style="width:50px;" value="CoO L₁/L₂ edge " onclick="$(document).ready(cobalt);"><br>
+      <input type="button" style="width:50px;"  value="NiO L₁/L₂ edge" onclick="$(document).ready(nickel);"><br>-->
+      <input type="button" style="width:50px;" value="Cu" onclick="$(document).ready(copper);"><br>
+      <input type="button" style="width:50px;" value="Ag" onclick="$(document).ready(silver);"><br>
+      <input type="button" style="width:50px;" value="Sn" onclick="$(document).ready(tin);"><br>
+      <br>
+      <b>K-edges</b><br>
+      <input type="button" style="width:50px;" value="Si" onclick="$(document).ready(silicon);"><br>
+      <input type="button" style="width:50px;" value="O" onclick="$(document).ready(iron);"><br>
+    </p></td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td><p style="text-align:center">$eV$</p></td>
+    <td>    
+    </td>
+  </tr> 
+</table>
+
+
+<p>A special variant of EELS is <a href="https://en.wikipedia.org/wiki/High_resolution_electron_energy_loss_spectroscopy">(H)REELS</a>, where the energy loss of a reflected electron beam is studied. This analysis is usually performed at much lower beam energies than conventional EELS measurements, providing a much higher surface sensitivity, as well as energy resolution (down to $meV$). </p>
+
+<p>&ensp;</p>
+
+<hr />
+<h3> References </h3>
+<p>[1] Egerton, R. F. (1996) Electron energy-loss spectroscopy in the electron microscope. 2. ed.</a></p>
+<p>[2] C. Colliex, T. Manoubi, M. Gasgnier et al., Scanning Electron Microscopy, vol. 11  (1985) p. 489-512 <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1176&context=electron">C. Colliex, Near Edge Fine Structures on Electron Energy Loss Spectroscopy Core Loss Edges</a></p>
+<p>[3] Source of the EEL-spectra <a href="https://eels.info/atlas">EELS atlas</a> and <a href="https://eelsdb.eu/">EELS data base</a></p>
+
+<h3>Further Reading:</h3>
+<p>Highly recommended side with lots of infos: <a href="https://eels.info/">EELS.info</a></p>
+
+</body>
+</html>
